@@ -7,7 +7,7 @@ import zipfile
 import requests
 from playwright.async_api import BrowserContext, async_playwright
 
-from settings import settings
+from config import settings
 
 network_data = {
     "NTW_NAME": "Polygon zkEVM Cardona Testnet",
