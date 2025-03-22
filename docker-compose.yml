@@ -1,0 +1,10 @@
+services:
+  playwright:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: playwright-img
+    volumes:
+      - ./extension:/app/extension
+      - ./.env:/app/.env
+    restart: on-failure
