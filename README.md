@@ -9,8 +9,10 @@ The test application in this repository, loads the MetaMask extension, creates a
 - **docker-compose.yml**: The Docker Compose file that defines the services and how they interact in the container.
 - **start.sh**: A shell script to simplify the process of running the application and container environment.
 - **README.md**: This file that explains how to set up and run the project.
+- **/ubuntu-vnc**: Docker image with Ubuntu 24 and VNC. Default VNC port is 5900, you can change this port in Dockerfile.
 
 ## Usage
+
 **Step 1:** Setting up your application
 
 - Environments
@@ -23,7 +25,6 @@ You need to specify the name of the file to start, and the path to it (if it is 
 ```bash
 poetry run python ./src/main.py
 ```
-
 Compose file contains path's to files, what you need to mount in your Docker container. Use `Volumes` in Compose file for this. Edit path's or change files.
 
 **Step 3:** Run the Application Using Docker Compose.
@@ -39,6 +40,7 @@ docker compose up --build
 ```
 
 ## Troubleshooting
+
 If you encounter issues, try:
 - Ensure that Docker and Docker Compose are running properly.
 - Check your application logs.
@@ -46,18 +48,17 @@ If you encounter issues, try:
 ```bash
 docker compose logs -f
 ```
-
 - Try to use Chromium channel instead of Chrome (**don't forget to change the Dockerfile** for install chromium, and channel of the browser in your application).
 ```Dockerfile
 RUN python3 -m pip install --no-cache-dir poetry playwright && \
     playwright install chromium --with-deps
 ```
-
 - Try HEADLESS=True.
 - Try to rebuild image (or fully).
 ```bash
 docker compose up --build
 ```
+- Try to run your application in VNC container.
 
 If application doesn't start, ensure that Docker and Docker Compose are running properly.
 

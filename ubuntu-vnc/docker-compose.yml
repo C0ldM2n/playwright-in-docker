@@ -1,0 +1,9 @@
+services:
+  ubuntu24-vnc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ubuntu-vnc
+    volumes:
+      - ./.env:/app/.env
+    restart: on-failure
